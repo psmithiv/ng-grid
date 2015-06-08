@@ -188,3 +188,9 @@ pip-log.txt
 ## JetBrains
 #################
 .idea
+.iml
+
+###################
+## Bower Components
+###################
+**/bower_components/**
