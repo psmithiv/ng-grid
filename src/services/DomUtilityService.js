@@ -103,8 +103,6 @@
             viewPort.css({'overflow-x': 'auto'});
         }
 
-        viewPort.height($scope.domAccessProvider.grid.rootDim.outerHeight - 30);
-
         $scope.adjustScrollTop(scrollTop, true); //ensure that the user stays scrolled where they were
     };
     domUtilityService.numberOfGrids = 0;

@@ -2,7 +2,7 @@
 * ng-grid JavaScript Library
 * Authors: https://github.com/angular-ui/ng-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 06/08/2015 12:02
+* Compiled At: 06/08/2015 13:25
 ***********************************************/
 (function(window, $) {
 'use strict';
@@ -303,8 +303,6 @@ angular.module('ngGrid.services').factory('$domUtilityService',['$utilityService
         } else {
             viewPort.css({'overflow-x': 'auto'});
         }
-
-        viewPort.height($scope.domAccessProvider.grid.rootDim.outerHeight - 30);
 
         $scope.adjustScrollTop(scrollTop, true); 
     };
