@@ -60,7 +60,15 @@
             scopeDereg();
         });
 
-        domUtilityService.UpdateGridLayout($scope, grid);
+        $scope.$watch(function() {
+            return {
+                height: grid.$root.height(),
+                width: grid.$root.width()
+            }
+        }, function(newValue, oldValue) {
+            domUtilityService.UpdateGridLayout($scope, grid);
+        }, true);
+        //domUtilityService.UpdateGridLayout($scope, grid);
     };
     domUtilityService.getRealWidth = function (obj) {
         var width = 0;
@@ -84,6 +92,19 @@
         grid.elementDims.rootMaxH = grid.$root.height();
         //check to see if anything has changed
         grid.refreshDomSizes();
+
+        //FIX for horizontal scroll bar showing when it shouldn't
+        var headerScroller = $scope.domAccessProvider.grid.$headerScroller;
+        var headerContainer = $scope.domAccessProvider.grid.$headerContainer;
+        var viewPort = $scope.domAccessProvider.grid.$viewport;
+        if(headerScroller.width() <= headerContainer.width()) {
+            viewPort.css({'overflow-x': 'hidden'});
+        } else {
+            viewPort.css({'overflow-x': 'auto'});
+        }
+
+        viewPort.height($scope.domAccessProvider.grid.rootDim.outerHeight - 30);
+
         $scope.adjustScrollTop(scrollTop, true); //ensure that the user stays scrolled where they were
     };
     domUtilityService.numberOfGrids = 0;
