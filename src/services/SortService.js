@@ -95,6 +95,13 @@
             direction,
             // IE9 HACK.... omg, I can't reference data array within the sort fn below. has to be a separate reference....!!!!
             d = data.slice(0);
+
+        //remove sort if no sort direction is defined
+        if(sortInfo.directions[0] == undefined) {
+            data.sort(null);
+            return;
+        }
+
         //now actually sort the data
         data.sort(function (itemA, itemB) {
             var tem = 0,

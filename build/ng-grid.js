@@ -2,7 +2,7 @@
 * ng-grid JavaScript Library
 * Authors: https://github.com/angular-ui/ng-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 06/08/2015 13:25
+* Compiled At: 06/08/2015 15:49
 ***********************************************/
 (function(window, $) {
 'use strict';
@@ -478,6 +478,10 @@ angular.module('ngGrid.services').factory('$sortService', ['$parse', '$utilitySe
             col,
             direction,
             d = data.slice(0);
+        if(sortInfo.directions[0] == undefined) {
+            data.sort(null);
+            return;
+        }
         data.sort(function (itemA, itemB) {
             var tem = 0,
                 indx = 0,
@@ -842,8 +846,20 @@ var ngColumn = function (config, $scope, grid, domUtilityService, $templateCache
             dir = self.sortDirection === ASC ? ASC : DESC;
             gotUserSortDirection = true;
         } else {
-            dir = self.sortDirection === ASC ? DESC : ASC;
+            switch(self.sortDirection) {
+                case ASC:
+                    dir = DESC;
+                    break;
+
+                case DESC:
+                    dir = undefined;
+                    break;
+
+                default:
+                    dir = ASC;
+            }
         }
+
         self.sortDirection = dir;
         config.sortCallback(self, evt);
         return false;

@@ -109,8 +109,20 @@
             dir = self.sortDirection === ASC ? ASC : DESC;
             gotUserSortDirection = true;
         } else {
-            dir = self.sortDirection === ASC ? DESC : ASC;    
+            switch(self.sortDirection) {
+                case ASC:
+                    dir = DESC;
+                    break;
+
+                case DESC:
+                    dir = undefined;
+                    break;
+
+                default:
+                    dir = ASC;
+            }
         }
+
         self.sortDirection = dir;
         config.sortCallback(self, evt);
         return false;
