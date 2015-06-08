@@ -193,4 +193,4 @@ pip-log.txt
 ###################
 ## Bower Components
 ###################
-**/bower_components/**
+**/bower_components/
