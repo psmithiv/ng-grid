@@ -4,6 +4,7 @@
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
 * Compiled At: 06/08/2015 12:02
 ***********************************************/
+//PAUL TEST
 (function(window, $) {
 'use strict';
 // the # of rows we want to add to the top and bottom of the rendered grid rows 
