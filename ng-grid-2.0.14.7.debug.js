@@ -2,7 +2,7 @@
 * ng-grid JavaScript Library
 * Authors: https://github.com/angular-ui/ng-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 06/15/2015 12:42
+* Compiled At: 06/15/2015 13:37
 ***********************************************/
 (function(window, $) {
 'use strict';
@@ -2250,7 +2250,7 @@ var ngGrid = function ($scope, options, sortService, domUtilityService, $filter,
     };
 
     $scope.viewportDimHeight = function() {
-        return Math.max(0, self.rootDim.outerHeight - $scope.topPanelHeight() - $scope.footerRowHeight - 2);
+        return Math.max(0, self.rootDim.outerHeight - $scope.topPanelHeight() - $scope.footerRowHeight);
     };
     $scope.groupBy = function (col) {
         if (self.data.length < 1 || !col.groupable  || !col.field) {
